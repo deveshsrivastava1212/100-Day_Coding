@@ -1,0 +1,54 @@
+Day- 2
+
+Problem: Remove Duplicates From Sorted Array
+Problem Link- https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
+
+Problem Statement: 
+
+        Given an integer array nums sorted in non-decreasing order,
+        remove the duplicates in-place such that each unique element
+        appears only once. The relative order of the elements should 
+        be kept the same. Then return the number of unique elements in nums.
+
+        Example 1:
+
+            Input: nums = [1,1,2]
+            Output: 2, nums = [1,2,_]
+            Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+            It does not matter what you leave beyond the returned k (hence they are underscores).
+
+
+Function:
+
+        1: Brute Force Approach- TC- O(N) SC- O(N)
+
+                #include<stack>
+                int removeDuplicates(vector<int> &arr, int n) {
+                    stack<int> st;
+                    for(int i=0;i<n;i++)
+                    {
+                        if(st.empty() || arr[i] != st.top())
+                            st.push(arr[i]);
+                    }
+                    int ans= st.size();
+                    return ans;
+                }
+                
+        2: Optimized Approach- 
+
+                class Solution {
+                public:
+                    int removeDuplicates(vector<int>& nums) {
+                        int i=0;
+                        for(int j=1;j<nums.size();j++)
+                        {
+                            if(nums[j] != nums[i])
+                                {
+                                    nums[i+1] = nums[j];
+                                    i++;
+                                }
+                        }
+                        return i+1;
+                    }
+                };
