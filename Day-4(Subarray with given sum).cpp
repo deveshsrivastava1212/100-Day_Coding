@@ -22,7 +22,7 @@
 //     from 2nd position to 4th position 
 //     is 12.  
 
-
+//code
 #include <bits/stdc++.h>
 using namespace std;
 
