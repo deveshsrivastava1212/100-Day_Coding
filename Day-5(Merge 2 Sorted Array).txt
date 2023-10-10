@@ -1,0 +1,45 @@
+Day- 5
+
+Problem- Merge Two Sorted Array
+
+Function-
+vector < int > sortedArray(vector < int > a, vector < int > b) {
+    // Write your code here
+    int s1 = a.size();
+    int s2 = b.size();
+    int i = 0;
+    int j = 0;
+    vector<int> UnionArr;
+    while(i<s1 && j<s2)
+    {
+        if(a[i] <= b[i]){
+            if(UnionArr.size()==0 || UnionArr.back() != a[i]){
+                UnionArr.push_back(a[i]);
+            }
+            i++;
+        }
+        else
+        {
+            if(UnionArr.size()==0 || UnionArr.back() != b[i]){
+                UnionArr.push_back(b[i]);
+            }
+            j++;
+        }
+    }
+
+    while(j<s2){
+        if(UnionArr.size()==0 || UnionArr.back() != b[i]){
+                UnionArr.push_back(b[i]);
+            }
+        j++;
+    }
+
+    while(i<s1){
+        if(UnionArr.size()==0 || UnionArr.back() != a[i]){
+                UnionArr.push_back(a[i]);
+            }
+        i++;
+    }
+
+    return UnionArr;
+}
