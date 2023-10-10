@@ -1,44 +1,74 @@
 Day- 5
 
 Problem- Merge Two Sorted Array
+Problem Link: https://www.codingninjas.com/studio/problems/sorted-array_6613259?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=0
+
+Problem Statement- 
+        Given two sorted arrays, ‘a’and ‘b, of size ‘n’and ‘m’,
+        respectively, return the union of the arrays. 
+
+        The union of two sorted arrays can be defined as an 3
+        array consisting of the common and the distinct |
+        elements of the two arrays. The final array should be 3
+        sorted in ascending order. 
+
+        Note: 'a’ and 'b' may contain duplicate elements, but the
+        union array must contain unique elements.
+
+        Example:
+        Input: n’ =5 ‘m’ = 3
+        ‘a’ = [1, 2, 3, 4, 6]
+        b = [2, 3, 5]
+        Output: [1, 2, 3, 4, 5, 6]
+        Explanation: Common elements in ‘a’ and ‘b’
+        are: [2, 3]
+        Distinct elements in ‘a’ are: [1, 4, 6]
+        Distinct elements in ‘b’ are: [5]
+
+        Union of ‘a’ and ‘b’ is: [1, 2, 3, 4, 5, 6]
+
 
 Function-
-vector < int > sortedArray(vector < int > a, vector < int > b) {
-    // Write your code here
+
+vector<int> sortedArray(vector<int> a, vector<int> b) {
     int s1 = a.size();
     int s2 = b.size();
     int i = 0;
     int j = 0;
     vector<int> UnionArr;
-    while(i<s1 && j<s2)
-    {
-        if(a[i] <= b[i]){
-            if(UnionArr.size()==0 || UnionArr.back() != a[i]){
+
+    while (i < s1 && j < s2) {
+        if (a[i] < b[j]) {
+            if (UnionArr.empty() || UnionArr.back() != a[i]) {
                 UnionArr.push_back(a[i]);
             }
             i++;
-        }
-        else
-        {
-            if(UnionArr.size()==0 || UnionArr.back() != b[i]){
-                UnionArr.push_back(b[i]);
+        } else if (a[i] > b[j]) {
+            if (UnionArr.empty() || UnionArr.back() != b[j]) {
+                UnionArr.push_back(b[j]);
             }
+            j++;
+        } else { // a[i] == b[j]
+            if (UnionArr.empty() || UnionArr.back() != a[i]) {
+                UnionArr.push_back(a[i]);
+            }
+            i++;
             j++;
         }
     }
 
-    while(j<s2){
-        if(UnionArr.size()==0 || UnionArr.back() != b[i]){
-                UnionArr.push_back(b[i]);
-            }
-        j++;
+    while (i < s1) {
+        if (UnionArr.empty() || UnionArr.back() != a[i]) {
+            UnionArr.push_back(a[i]);
+        }
+        i++;
     }
 
-    while(i<s1){
-        if(UnionArr.size()==0 || UnionArr.back() != a[i]){
-                UnionArr.push_back(a[i]);
-            }
-        i++;
+    while (j < s2) {
+        if (UnionArr.empty() || UnionArr.back() != b[j]) {
+            UnionArr.push_back(b[j]);
+        }
+        j++;
     }
 
     return UnionArr;
