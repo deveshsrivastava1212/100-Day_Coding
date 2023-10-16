@@ -1,0 +1,51 @@
+Day-11
+
+Problem- Creating Doubly Linked List From Array Element
+Problem Link: https://www.codingninjas.com/studio/problems/introduction-to-doubly-linked-list_8160413?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=0
+
+
+Problem Statement:
+
+        You are given an array ‘Arr’of size ‘N’ consisting of positive
+        integers.
+        Your task is to make a doubly linked list from the array and return
+        the head of the linked list.
+        Here, the head of the doubly linked list is the first element of the
+        array, and the tail of the doubly linked list is the last element.
+
+        Note:
+        A doubly linked list is one in which it is possible
+        to access the next and the previous nodes from a node
+        in the linked list (if they exist).
+
+        Example:
+        Input: ‘N’ = 4, ‘Are’ = [4, 2, 5, 1]
+        Output: 4 2 5 1
+        Explanation: Doubly Linked List for the array ‘Arr’ =
+        [4, 2, 5, 1] is 4 <-> 2 <-> 5 <-> 1.
+
+
+Function: 
+        void insertAtTail(Node*&tail , int data){
+            // creating the second node for the doubly linked list
+            Node*temp  = new Node(data);
+            tail->next = temp;
+            temp->prev = tail;
+            tail  = temp;
+        }
+
+
+        Node* constructDLL(vector<int>& arr) {
+            // creating the first node..
+            Node* temp  = new Node(arr[0]);  // it is the first node for the doubl linkedlist
+            Node* head = temp;
+            temp->next = NULL;
+            temp->prev = NULL;
+            Node* tail  = temp;
+            int i =1;
+            while(i<arr.size()){
+                insertAtTail(tail,arr[i]);
+                i++;
+            }
+            return head;
+        }
