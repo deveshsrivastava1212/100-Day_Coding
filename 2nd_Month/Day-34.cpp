@@ -48,8 +48,8 @@ class Solution
                 ans = str[i];
             }
         }
-        // for(auto i: mp)
-        //     std::cout<<i.first<<": "<<i.second<<" ,";
+        for(auto i: mp)
+            std::cout<<i.first<<": "<<i.second<<" ,";
         for (auto i : mp)
         {
             if (i.second == count)
