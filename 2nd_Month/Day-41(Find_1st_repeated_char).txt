@@ -1,0 +1,36 @@
+Day-41
+
+Problem - Find First Repeated Character
+
+Problem Link- https://practice.geeksforgeeks.org/problems/find-first-repeated-character4108/1?page=3&sprint=a663236c31453b969852f9ea22507634&sortBy=submissions
+
+Problem Statement -
+
+                Given a string S. The task is to find the first repeated character in it. We need to find the character 
+                that occurs more than once and whose index of second occurrence is smallest. S contains only lowercase letters.
+
+                Example 1:
+                Input: S="geeksforgeeks"
+                Output: e
+                Explanation: 'e' repeats at third position.
+
+
+Function - 
+
+string firstRepChar(string s)
+{
+    //code here.
+    string str="";
+    unordered_map<char,int>mp;
+    for(int i=0; i<s.size(); i++)
+    {
+        mp[s[i]]++;
+        if(mp[s[i]]>1)
+        {
+            str=str+s[i];
+            return str;
+        }
+    }
+    str=str+"-1";
+    return str;
+}
