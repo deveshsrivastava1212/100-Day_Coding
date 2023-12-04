@@ -2,6 +2,8 @@ Day- 54
 
 Problem - Find all pairs with a given sum
 
+Problem Link - https://practice.geeksforgeeks.org/problems/find-all-pairs-whose-sum-is-x5808/1?page=1&sprint=a663236c31453b969852f9ea22507634&sortBy=submissions
+
 Problem Statement - 
 Given two unsorted arrays A of size N and B of size M of distinct elements, the task is to find all pairs 
 from both arrays whose sum is equal to X.
