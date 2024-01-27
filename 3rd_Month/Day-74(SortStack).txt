@@ -1,0 +1,49 @@
+Day- 74
+
+Problem - https://www.codingninjas.com/studio/problems/abc_1229513?interviewProblemRedirection=true&leftPanelTabValue=PROBLEM&customSource=studio_nav
+
+Problem Statement- 
+You are given a stack ‘S’. Your task is to sort the sack recursively.
+
+Note:
+Looping through the stack is not allowed.
+You need to return a stack that is sorted in descending order.
+
+For example:
+Given stack S = 1 3 2 
+The output will be 3 2 1 since it is the sorted order.
+
+Function - 
+
+#include <bits/stdc++.h> 
+
+void sortedInsert(stack<int>& s, int n)
+{
+	//base case
+	if(s.empty() || (s.top() < n)){
+		s.push(n);
+		return;
+	}
+
+	int num = s.top();
+	s.pop();
+
+	sortedInsert(s,n);
+
+	s.push(num);
+}
+
+stack<int> sortStack(stack<int> &s)
+{
+	//base case
+	if(s.empty())
+		return s;
+
+	int num = s.top();
+	s.pop();
+
+	//recursive call
+	sortStack(s);
+	sortedInsert(s,num);
+	return s;
+}
