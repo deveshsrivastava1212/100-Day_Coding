@@ -1,0 +1,31 @@
+Day- 75
+
+Problem- Redundant Bracket
+
+Problem link- https://www.codingninjas.com/studio/problems/redundant-brackets_975473?interviewProblemRedirection=true&leftPanelTabValue=PROBLEM&customSource=studio_nav
+
+Function - 
+
+#include <bits/stdc++.h> 
+bool findRedundantBrackets(string &s)
+{
+    // Write your code here.
+    stack<char> st;
+    for(int i=0;i<s.length();i++){
+        char ch=s[i];
+        if(ch=='('||ch=='+'||ch=='-'||ch=='*'||ch=='/'){
+            st.push(ch);
+        }
+        if(ch==')'){
+            bool redundant = true;
+            while(st.top() != '('){
+                redundant=false;
+                st.pop();
+            }
+            st.pop();
+            if(redundant)
+                return true;
+        }
+    }
+    return false;
+}

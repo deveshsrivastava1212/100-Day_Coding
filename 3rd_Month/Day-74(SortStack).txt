@@ -13,6 +13,7 @@ For example:
 Given stack S = 1 3 2 
 The output will be 3 2 1 since it is the sorted order.
 
+
 Function - 
 
 #include <bits/stdc++.h> 
