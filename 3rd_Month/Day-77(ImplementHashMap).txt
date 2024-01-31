@@ -1,0 +1,93 @@
+Day- 77
+
+Problem - Implement HashMap
+
+Problem Statement- 
+Design a data structure that stores a mapping of a key to a given value and supports the following operations in constant time.
+
+1. INSERT(key, value): Inserts an integer value to the data structure against a string type key if not already present. If already present, it updates the value of the key with the new one. This function will not return anything.
+
+2. DELETE(key): Removes the key from the data structure if present. It doesn't return anything.
+
+3. SEARCH(key): It searches for the key in the data structure. In case it is present, return true. Otherwise, return false.
+
+4. GET(key): It returns the integer value stored against the given key. If the key is not present, return -1. 
+
+5. GET_SIZE(): It returns an integer value denoting the size of the data structure. 
+
+6. IS_EMPTY(): It returns a boolean value, denoting whether the data structure is empty or not. 
+Note :
+1. Key is always a string value.
+2. Value can never be -1.
+
+
+Function- 
+
+#include<string>
+#include<vector>
+
+class myHashMap 
+{
+    public:
+    vector<pair<string,int>> hash;
+    myHashMap() 
+    {
+        // Write your code here.
+    }
+
+    void insert(string key, int value) 
+    {
+        // Write your code here.
+        for(auto &i: hash){
+            if(i.first == key)
+            {
+                i.second = value;
+                return;
+            }
+        }
+        hash.push_back({key, value});
+    }
+
+    bool search(string key) 
+    {
+        // Write your code here.
+        for(const auto i:hash){
+            if(i.first == key)
+                return true;
+        }
+        return false;
+    }
+
+    int get(string key) 
+    {
+        // Write your code here.
+        for(auto i: hash){
+            if(i.first == key)
+                return i.second;
+        }
+        return -1;
+    }
+
+    void remove(string key) 
+    {
+        // Write your code here.
+        for(auto it=hash.begin(); it != hash.end(); ++it){
+            if(it->first == key){
+                hash.erase(it);
+                return;
+            }
+        }
+    }
+
+    int getSize() 
+    {
+        // Write your code here.
+        return hash.size();
+    }
+
+    bool isEmpty() 
+    { 
+        // Write your code here.
+        return hash.empty();
+    }
+};
