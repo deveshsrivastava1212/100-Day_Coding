@@ -1,0 +1,48 @@
+Day- 92
+
+Problem Statement - Given 2 Arrays of Inorder and preorder traversal. The tree can contain duplicate elements. Construct a tree and print the Postorder traversal. 
+
+Example 1:
+
+Input:
+N = 4
+inorder[] = {1 6 8 7}
+preorder[] = {1 6 7 8}
+Output: 8 7 6 1
+
+
+
+class Solution{
+    public:
+    
+    int findPosition(int in[], int inStartIdx, int element, int n)
+    {
+        for(int i= inStartIdx; i<n; i++){
+            if(in[i] == element)
+                return i;
+        }
+        return -1;
+    }
+    
+    Node* solve(int in[],int pre[], int &preIdx, int inStartIdx, int inEndIdx, int n){
+        if( preIdx >= n || inStartIdx > inEndIdx)
+            return NULL;
+        
+        int element = pre[preIdx++];
+        Node* root = new Node(element);
+        int position = findPosition(in, inStartIdx, element, n);
+        
+        root->left = solve(in, pre, preIdx, inStartIdx, position-1, n);
+        root->right = solve(in, pre, preIdx, position+1, inEndIdx, n);
+        
+        return root;
+    }
+    
+    Node* buildTree(int in[],int pre[], int n)
+    {
+        // Code here
+        int preidx=0;
+        Node* ans = solve(in, pre, preidx, 0, n-1, n);
+        return ans;
+    }
+};
